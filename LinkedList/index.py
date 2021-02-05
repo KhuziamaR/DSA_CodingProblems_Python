@@ -75,18 +75,44 @@ def sum_lists(list1,list2):
         l1 = l1.next
         l2 = l2.next
     return l3
+def palindrome_linked_list(list1):
+    l1 = list1.head
+    H = dict()
+    count = 0
+    while l1:
+        if l1.data in H:
+            H[l1.data] +=1
+        else:
+            H[l1.data] = 1
+        count+=1
+        l1= l1.next
+    odd = 0
+    for v in H.values():
+        if v % 2 != 0:
+            odd+=1
+    if count % 2 == 0 and odd == 0:
+        return True
+    if count %2 !=0 and odd == 1:
+        return True
+    return False
+    
 
+
+    
+
+
+    
 
 data = LinkedList()
-data.insert(7)
-data.insert(1)
-data.insert(6)
+data.insert(0)
+data.insert(0)
+data.insert(2)
 data2 = LinkedList()
 data2.insert(5)
 data2.insert(9)
 data2.insert(2)
 data3 = sum_lists(data,data2)
 data3.printLL()
-
+print(palindrome_linked_list(data))
 
 
