@@ -95,13 +95,40 @@ def palindrome_linked_list(list1):
     if count %2 !=0 and odd == 1:
         return True
     return False
-    
-
-
-    
-
-
-    
+def intersect(list1,list2):
+    l1 = list1.head
+    l2 = list2.head
+    size1 = 0
+    size2 = 0
+    while l1:
+        size1+=1
+        l1 = l1.next
+    while l2:
+        size1+=1
+        l2 = l2.next
+    diff = abs(size1-size2)
+    for i in range(diff):
+        if size1>size2:
+            l1=l1.next
+        else:
+            l2=l2.next
+    while l1:
+        if l1 == l2:
+            ans = l1
+        l1=l1.next
+        l2=l2.next
+    if l1 == l2:
+        return ans
+def loop_detection(head):
+    cursor = head
+    H = dict()
+    while cursor:
+        if cursor in H:
+            return cursor
+        else:
+            H[cursor]= True
+        cursor=cursor.next
+    return -1
 
 data = LinkedList()
 data.insert(0)
